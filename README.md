@@ -1,2 +1,2 @@
 # hello-world
-this is a description
+this is a C code repository
