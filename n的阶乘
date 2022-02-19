@@ -1,12 +1,18 @@
-#include <stdio.h>
 int factorial(int n) {
-	if(n<0)
-		printf("输入错误，请输入正整数"); 
-	else if (n == 0 || n == 1)
-		return 1;
-	else 
-	return	n* factorial(n-1);
+	//if(n<0)
+	//	printf("输入错误，请输入正整数"); 
+	//else if (n == 0 || n == 1)
+	//	return 1;
+	//else 
+	//return	n* factorial(n-1);//一层一层的往开来剥
+	//方法二
+	int i,mul=1;
+	for (i = 1; i <= n; i++) {
+		mul *= i;		
 	}
+	return mul;
+	}
+
 int main() {
 	int n = 0, mul = 0;
 	printf("请输入n的阶乘n\n");
