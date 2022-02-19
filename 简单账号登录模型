@@ -1,0 +1,37 @@
+#include <stdio.h>
+int SF(void) {
+	//scanf_s（）函数是提高了安全性，所以格式中要加数值个数
+	char password[20] = { 0 };
+	int ret=0;
+	int flag,ch;
+	printf("字符请输入密码");
+	scanf_s("%s", password,20);//数组不用加取址符
+		//方法1
+	while (ch = getchar() != '\n')
+	{
+		;
+	}
+	printf("请确认密码（Y/N）\n"); 
+	//getchar();//此时读取的是上次scanf输入缓冲区剩余的回车，把数据区读完，值为10
+	ret = getchar(); 
+	//方法2：缺点，如果password输入的字符包含空格的时候scanf只会读空格之前的内容，
+	// 会导致后面password的内容被读给ret,故应该采用把缓冲区读完后再读给ret,见方法1
+	//flag = ((ret == 'N') || (ret == 'Y'));
+	//printf("%d\n", flag);
+	//while (!flag) {
+	//	ret = getchar();
+	//	flag  = flag || (ret == 'N') || (ret == 'Y');
+	//	printf("%d\n", flag);
+	//}
+	
+		if ( 'Y'== ret)
+			printf("确认成功"); 
+		else
+			printf("错误");
+	
+	return 0;
+}
+int main() {
+	SF();
+	return 0;
+}
