@@ -1,0 +1,27 @@
+int CommonDivisor() {
+//辗转相除法
+	int m, n,d;
+	printf("请输入两个数");
+	scanf_s("%d %d", &m, &n);
+	while(m >= n) {
+		if(m%n==0)
+		{
+			printf("最大公约数是%d", n);
+			break;
+		}
+		d = (m % n);
+		m = n;
+		n = d;
+	}
+	while (m < n) {
+		if (n % m == 0)
+		{
+			printf("最大公约数是%d", m);
+			break;
+		}
+		d = (n % m);
+		n = m;
+		m = d;
+	}
+	return 0;
+}
