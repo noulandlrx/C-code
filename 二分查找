@@ -1,0 +1,25 @@
+int binsearch() {
+	//将有序数组区间分为两半，每次将要查找的数x与中间数作比较，
+	//x大于中间数时，在右半边查找，反之左半边查找直到找到停止
+	int arr[] = { 1,2,3,4,5,6,7,8,9 };
+	int x=0, sz, left, right, mid;
+	printf("请输入要查找的数");
+	scanf_s("%d", &x,1);
+	sz = sizeof(arr) / sizeof(arr[0]);//计算数组长度
+	left = 0;//数组左下标
+	right = sz-1;//数组右下标
+	while (left <= right) {
+		mid = (left + right) / 2;//数组中间下标
+		if (arr[mid] == x){
+			printf("找到了，下标为%d\n", mid);
+			break;//防止因找到时left与right值不发生改变变成死循环
+		}		
+		else if (arr[mid] < x)
+			left = mid + 1;
+		else
+			right = mid - 1;
+	}
+	if (left > right)
+		printf("未找到");
+	return 0;
+}
