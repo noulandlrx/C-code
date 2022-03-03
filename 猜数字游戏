@@ -1,0 +1,104 @@
+#include <stdio.h>       /* printf, scanf，NULL */
+#include <stdlib.h>     /* srand, rand */
+#include<time.h>        /* time */
+int game() {
+	//产生一个随机数
+	  /* initialize random seed: */
+	int ret, guessnum = -1;
+	srand((unsigned int)time(NULL));
+	/* generate secret number between 1 and 100: */
+	ret = rand() % 100 + 1;
+	while (1) {
+		printf("猜数字:>");
+		scanf_s("%d", &guessnum);
+		//注：此处scanf格式控制中不要加换行控制，否则本次读的数据会是上次的数据
+		if (ret > guessnum) {
+			printf("猜小了\n");
+		}
+		else if (ret < guessnum) {
+			printf("猜大了\n");
+		}
+		else {
+			printf("恭喜你，猜对了\n"); break;
+		}
+	}
+	return 0;
+}
+
+
+int numbergame() {
+	int choice=0;
+	int flag = 1;
+	while (flag) {
+		printf("##################################\n");
+		printf("######## 1:play    0:exit ########\n");
+		printf("##################################\n");
+		scanf_s("%d", &choice);
+		switch (choice)
+		{
+		case 0:
+			flag = 0; break;
+		case 1:
+			game(); break;
+		default:
+			printf("选错了，请重选\n");
+			break;
+		}
+	
+	}
+	return 0;
+}
+
+
+以下为运行结果
+##################################
+######## 1:play    0:exit ########
+##################################
+1
+猜数字:>50
+猜小了
+猜数字:>75
+猜大了
+猜数字:>62
+猜大了
+猜数字:>56
+猜小了
+猜数字:>58
+猜小了
+猜数字:>60
+猜大了
+猜数字:>59
+恭喜你，猜对了
+##################################
+######## 1:play    0:exit ########
+##################################
+5
+选错了，请重选
+##################################
+######## 1:play    0:exit ########
+##################################
+1
+猜数字:>50
+猜小了
+猜数字:>60
+猜小了
+猜数字:>70
+猜小了
+猜数字:>80
+猜小了
+猜数字:>90
+猜小了
+猜数字:>95
+猜小了
+猜数字:>99
+猜大了
+猜数字:>97
+恭喜你，猜对了
+##################################
+######## 1:play    0:exit ########
+##################################
+0
+
+D:\project\VC\C language programmer\x64\Debug\special function.exe (进程 7560)已退出，代码为 0。
+按任意键关闭此窗口. . .
+
