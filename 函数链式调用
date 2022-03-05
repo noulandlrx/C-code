@@ -1,0 +1,8 @@
+#include<stdio.h>
+int main() {
+	//printf的返回值为打印字符个数
+	printf("%d", printf("%d", printf("%d", 43)));
+	return 0;
+}
+结果
+4321
