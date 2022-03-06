@@ -1,0 +1,53 @@
+#include<stdio.h>
+int danceQ() {
+    int queue[3000]={0};
+    int dcqueue[3000] = { 0 };//舞蹈队
+    int N, num = -1, count = 0, i = 0, j, k;//N为学生总数，num为出队人数,count,当前出队数,讨论真正的count=0
+    scanf_s("%d", &N);
+    for (i = 0; i < N; i++)
+        scanf_s("%d", &queue[i]);
+    for (j = 0; j < N; j++) {
+        count = 0;
+        for (i = 0; i < N; i++)
+            dcqueue[i] = queue[i];
+        //统计左侧不出队形的人数
+        // for(i=0;i<N;i++)
+        // a[i]=1;
+        // for(i=1;i<N;i++)
+        // for(j=1;j<=i;j++)
+        //  if(a[j-1]<a[j])
+        //  
+        // a[j]++;
+        //200   133       143       213     116     143     130
+        // 5   4(2种队）   2         
+        //k<j时，dcqueue[k]>queue[j]直接出队丢，count++,其余入dance队，
+        for (k = 0; k < N; k++) {
+         
+            if (k < j) {
+                if (queue[k] > queue[j]){
+                    count++;
+                }
+                   
+                else if (queue[k] > queue[k + 1])
+                    count++;
+            }
+            else if(k==j)
+            {
+                ;
+            }
+            else if (k > j) {
+                if (queue[k] > queue[j])
+                    count++;
+                else if (queue[k] < queue[k + 1])
+                    count++;
+                
+            }
+        }
+        if (j == 0)
+            num = count;
+        if (num > count)
+            num = count;
+    }
+    printf("%d", num);
+    return 0;
+}
