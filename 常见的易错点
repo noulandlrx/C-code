@@ -1,0 +1,30 @@
+#include<stdio.h>
+
+int main() {
+	//指针的使用
+	int ba[5] = { 1,2,3,4,5, };
+	int* ptr = (int*)(&ba + 1);
+	printf("%d %d\n", *(ba + 1), *(ptr + 1));
+	//b++>1中先执行判断b>1，再执行b+1
+	int a = 1;
+	int b = 10;
+	do {
+		b -= a;
+		a++;
+	} while (b-- > 0);
+		printf("%d %d",a, b);
+		b = 1;
+		while (b-->0) {
+			printf("先判断再减1\n");
+		}
+		//continue是结束当前循环结构，进入下一循环结构的条件判断
+		int i = 0, sum = 0;
+		do
+		{
+			if (i == (i / 2) * 2)
+				continue;
+			sum += i;
+		} while (++i);
+		printf("%d\n", sum);
+		return 0;
+}
