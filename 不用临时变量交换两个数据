@@ -1,0 +1,17 @@
+#include<stdio.h>
+int main() {
+	int a=6, b=2;
+	printf("before a=%d\t", a);
+	printf("before b=%d\n", b);
+	a = a ^ b;
+	b = a ^ b;//1、2等式等价于b=a^b^b=a^0=a;自身跟自身异或得0，与0异或不变，与1异或取反
+	a = a ^ b;
+	printf("after  a=%d\t", a);
+	printf("after  b=%d\n", b);
+
+	return 0;
+}
+
+运行结果
+before a=6      before b=2
+after  a=2      after  b=6
