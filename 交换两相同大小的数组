@@ -1,0 +1,49 @@
+#include<stdio.h>
+//数组名可以作为实参，传递过去形参用数组，这样子在调用函数中就可以更改原来数组中的值
+print(int arr[], int sz) {
+	int i;
+	for (i = 0; i < sz; i++) {
+		printf("%-2d ", arr[i]);
+	}
+	printf("\n");
+}
+int change(int arr1[], int sz1, int arr2[], int sz2) {
+	int i;
+	int tmp;
+	if (sz1 != sz2){
+		printf("两数组空间大小不一致，无法交换");
+		return 0;
+	}
+	else
+		for (i = 0; i < sz1; i++) {
+			tmp = arr1[i];
+			arr1[i] = arr2[i];
+			arr2[i] = tmp;
+		}
+	return 1;
+}
+int main() {
+	int arr1[5] = { 1,2,3,4,5};
+	int arr2[5] = { 6,7,8,9,10 };
+	int sz1, sz2;
+	int success;
+	sz1 = sizeof(arr1) / sizeof(arr1[0]);
+	sz2 = sizeof(arr2) / sizeof(arr2[0]);
+	printf("交换前arr1数组： ");
+	print(arr1,sz1);
+	printf("交换前arr2数组： ");
+	print(arr2,sz2);
+	success=change(arr1, sz1, arr2, sz2);
+	if (success) {
+		printf("交换后arr1数组： ");
+		print(arr1, sz1);
+		printf("交换后arr2数组： ");
+		print(arr2, sz2);
+	}
+}
+
+运行结果
+交换前arr1数组： 1  2  3  4  5
+交换前arr2数组： 6  7  8  9  10
+交换后arr1数组： 6  7  8  9  10
+交换后arr2数组： 1  2  3  4  5
