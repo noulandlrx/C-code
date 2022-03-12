@@ -1,0 +1,51 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+	//算术移位，是补码的移位，负数右移时高位补1，打印时将补码转换为原码显示
+	int a = -1; int b;
+	//-1 : 11111111111111111111111111111111
+	b = a >> 1;
+	printf("%x\n", b);//b=-1
+
+	//char/short小于int类型数值参与算术运算时，先转为int，然后再计算，sizeof()括号里面为数据类型所占空间大小
+	char c = 1; int d=5;
+	printf("%d\n", sizeof(c));//1
+	printf("%d\n", sizeof(+c));//4，算术运算会将小于int的转换为int
+	printf("%d\n", sizeof(!c));//1
+	printf("%d\n", sizeof(c=d+6));//1虽然有运算式，但是赋值时赋给C为字符类型
+	printf("%d\n", c);//sizeof()函数里的表达式不进行实际的运算
+
+	//数组指针
+	int arr[10] = { 0 };
+	int* p = arr;//指针局部变量一定要初始化再使用，否则可能会引起脏数据（野指针），以免指针为随机值被赋值
+	printf("%p\n", arr);//arr为首元素的地址
+	printf("%p\n", &arr[0]);
+	printf("%p\n", arr + 1);
+	printf("%p\n", &arr );//&数组名 为整个数组的地址
+	printf("%p\n", &arr+1);//地址加了整个数组的大小
+	//运行结果
+	//000000A8F83CF648
+	//000000A8F83CF648
+	//000000A8F83CF64C	
+	//000000A8F83CF648
+	//000000A8F83CF670
+
+	//指针的类型决定了向后或向前走一步有多大
+	char m = 'a';
+	int n = 6;
+	char* t;
+	int* q;
+	t = &m;
+	q = &n;
+	printf("%p\n", t);
+	printf("%p\n", t+1);
+	printf("%p\n", q);
+	printf("%p\n", q+1);
+	//运行结果
+	//000000A8F83CF6A4
+	//000000A8F83CF6A5
+	//000000A8F83CF6C4
+	//000000A8F83CF6C8
+	return 0;
+}
