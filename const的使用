@@ -1,0 +1,12 @@
+#include<stdio.h>
+int main() {
+	const int num = 10;
+	//const int* p = &num;
+	//*p = 20;//err,const放在*p的左边时，修饰的是*p,也就是说不能通过p改变*p的值
+	int* const p = &num;
+	*p = 20;
+	int n = 100;
+	//p = &n;//当const放在*后面时，修饰的是p,指针，所以此赋值会报错
+	printf("%d", num);
+	return 0;
+}
