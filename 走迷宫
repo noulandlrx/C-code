@@ -1,0 +1,24 @@
+//maze[][]它表示一个迷宫，其中的1表示墙壁，0表示可以走的路，只能横着走或竖着走，
+//不能斜着走，要求编程序找出从左上角到右下角的路线。入口点为[0, 0], 
+//既第一格是可以走的路。
+#include<stdio.h>
+#define row 5
+#define col 5
+int main() {
+    int n = 1, m = 1, i = 0, j = 0;
+    int maze[row][col] = {0};//定义二维数组时必须至少有一个大小是已知的，即需要初始化
+    printf("请输入迷宫大小，行和列：>");
+    scanf_s("%d", &n);
+    scanf_s("%d", &m);
+    printf("请输入迷宫构造，1为墙，0为可走路\n");
+    for (i = 0; i < n; i++)
+        for (j = 0; j < m; j++)
+            scanf_s("%d", &maze[i][j]);
+    //for (i = 0; i < n; i++)
+    //    for (j = 0; j < m; j++)
+    //        printf("%d", maze[i][j]);
+    //找路，找到路继续找，找不到退回上一个节点重新找，所以用递归思想
+    findrode();
+
+    return 0;
+}
