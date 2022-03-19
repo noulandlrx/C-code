@@ -1,0 +1,20 @@
+#include<stdio.h>
+int main(){
+    char str[101];
+    while(scanf("%s",str)!=EOF){
+        char* pstr=str;
+        char cnt=0;
+        while(*pstr!='\0'){
+            putchar(*pstr++);
+            if(++cnt==8){
+                printf("\n");
+                cnt=0;
+               }
+        }
+        while(cnt!=0&&cnt<8){
+            printf("0");
+            cnt++;
+        }
+    }
+    return 0;
+}
