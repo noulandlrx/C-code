@@ -1,0 +1,65 @@
+#include<stdio.h>
+int main() {
+    char hex[10];
+    scanf("%s", hex);
+    char* phex = hex;
+    int num, n = 0, i, dec = 0;//n为字符个数
+    phex++;
+    phex++;
+    while (*phex++ != '\0')
+        n++;
+    phex = hex+2;
+    for (i = 0; i < n; i++) {
+        if (*phex >= '0' && *phex <= '9')
+            num = *phex - '0';
+        else
+            switch (*phex) {
+            case 'A':
+                num = 10;
+                break;
+            case 'B':
+                num = 11;
+                break;
+            case 'C':
+                num = 12;
+                break;
+            case 'D':
+                num = 13;
+                break;
+            case 'E':
+                num = 14;
+                break;
+            case 'F':
+                num = 15;
+                break;
+            case 'a':
+                num = 10;
+                break;
+            case 'b':
+                num = 11;
+                break;
+            case 'c':
+                num = 12;
+                break;
+            case 'd':
+                num = 13;
+                break;
+            case 'e':
+                num = 14;
+                break;
+            case 'f':
+                num = 15;
+                break;
+            default:
+                break;
+            }
+        int j = 0, value = 1;
+        for (j = n - i - 1; j > 0; j--) {
+            value *= 16;
+        }
+        dec += (value*num);
+        phex++;
+    }
+    printf("%d", dec);
+    return 0;
+}
