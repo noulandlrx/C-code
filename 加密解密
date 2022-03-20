@@ -1,0 +1,47 @@
+#include<stdio.h>
+//1、加密
+//若字符是英文，
+//若为大写,若为Z需要变a，其余的加密方法为该字符加上32加1;
+//若为小写，若为z需要变A，其余的加密方法为该字符减32加1;
+//若为数字，加密方法为数字加1模10；
+//2、解密
+//若字符是英文，
+//若为大写,若为A需要变z，其余的解密方法为该字符加上32减1;
+//若为小写，若为a需要变Z，其余的解密方法为该字符减32减1;
+//若为数字，解密方法为数字加10减1模10；
+int main(){
+    char codestr[1001]={'\0'};
+    char decodestr[1001]={'\0'};
+    scanf("%s",codestr);
+    scanf("%s",decodestr);
+    //加密
+    char *pcode=codestr;
+    while(*pcode!='\0'){
+        if(*pcode>='A'&&*pcode<'Z')
+            putchar(*pcode+33);
+        else if(*pcode=='Z')
+            putchar('a');
+        else if(*pcode>='a'&&*pcode<'z')
+            putchar(*pcode-31);
+        else if(*pcode=='z')
+            putchar('A');
+        else if(*pcode>='0'&&*pcode<='9')
+            putchar((*pcode-'0'+1)%10+'0');
+        pcode++;
+    }
+    printf("\n");
+    char *pdecode=decodestr;
+    while(*pdecode!='\0'){
+        if(*pdecode>'A'&&*pdecode<='Z')
+            putchar(*pdecode+31);
+        else if(*pdecode=='A')
+            putchar('z');
+        else if(*pdecode>'a'&&*pdecode<='z')
+            putchar(*pdecode-33);
+        else if(*pdecode=='a')
+            putchar('Z');
+        else if(*pdecode>='0'&&*pdecode<='9')
+            putchar((*pdecode-'0'+10-1)%10+'0');
+        pdecode++;
+    }
+}
